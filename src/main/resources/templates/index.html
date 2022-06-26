@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS -->
+    <link th:href="@{/styles.css}" rel="stylesheet"></link>
+    <title>Book Manager</title>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="page-banner">
+                <h1 class="title">Bookorama</h1>
+                <p>Books for Ninjas</p>
+                <form id="search-books">
+                    <input type="text" placeholder="Search books..." />
+                </form>
+            </div>
+        </header>
+        <div id="book-list">
+            <h2 class="title">Books to Read</h2>
+            <ul>
+                <li th:each="book:${books}" id="">
+                    <span class="name" th:text="${book.title}"> </span>
+                    <span class="delete">delete</span>
+                </li>
+            </ul>
+        </div>
+        <form id="add-book">
+            <input type="text" placeholder="Add a book..." />
+            <button>Add</button>
+        </form>
+    </div>
+
+    <script th:inline="javascript">
+        const bookList = [[${books}]];
+
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const bookList = document.querySelector('#book-list ul');
+        //
+        //     bookList.addEventListener('click', function(event) {
+        //         if (event.target.className == 'delete') {
+        //             const bookItem = event.target.parentNode;
+        //             console.log(bookItem);
+        //
+        //             // li.parentNode.removeChild(li);
+        //         }
+        //     });
+        //
+        //     console.log(bookObjects);
+        // });
+    </script>
+</body>
+</html>
