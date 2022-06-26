@@ -17,8 +17,10 @@ public class BookController {
     }
 
     @GetMapping("books")
-    public List<Book> getBooks() {
-        return bookService.getBooks();
+    public ModelAndView getBooks() {
+        ModelAndView modelAndView = new ModelAndView("index.html");
+        modelAndView.addObject("books", bookService.getBooks());
+        return modelAndView;
     }
 
     @PostMapping("books")
