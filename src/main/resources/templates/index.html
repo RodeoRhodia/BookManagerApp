@@ -5,7 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <!-- CSS -->
-    <link th:href="@{/styles.css}" rel="stylesheet"></link>
+    <link th:href="@{/styles.css}" rel="stylesheet">
+    <!-- JavaScript -->
+<!--     <script th:src="@{/app.js}"></script>-->
     <title>Book Manager</title>
 </head>
 <body>
@@ -22,11 +24,26 @@
         <div id="book-list">
             <h2 class="title">Books to Read</h2>
             <ul>
-                <li th:each="book:${books}" id="">
+                <li th:each="book:${books}" th:attr="bookid=${book.id}">
                     <span class="name" th:text="${book.title}"> </span>
                     <span class="delete">delete</span>
                 </li>
             </ul>
+
+
+<!--            <form action="#" th:action="@{'/books/{id}'(id=${book.id})}" th:method="delete" >-->
+<!--                <li th:each="book:${books}" th:attr="bookid=${book.id}">-->
+<!--                    <label th:text="${book.title}"></label>-->
+<!--                    <button type="submit" class="btn">Delete</button>-->
+<!--                </li>-->
+<!--            </form>-->
+
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.title}"></td>
+                <td><a th:href="@{/books/{id}(id=${book.id})}">Delete</a></td>
+            </tr>
+            </tbody>
         </div>
         <form id="add-book">
             <input type="text" placeholder="Add a book..." />
@@ -34,23 +51,16 @@
         </form>
     </div>
 
-    <script th:inline="javascript">
-        const bookList = [[${books}]];
-
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     const bookList = document.querySelector('#book-list ul');
-        //
-        //     bookList.addEventListener('click', function(event) {
-        //         if (event.target.className == 'delete') {
-        //             const bookItem = event.target.parentNode;
-        //             console.log(bookItem);
-        //
-        //             // li.parentNode.removeChild(li);
-        //         }
-        //     });
-        //
-        //     console.log(bookObjects);
-        // });
-    </script>
+<!--    <script th:inline="javascript">-->
+<!--        // const bookList = document.querySelector('#book-list ul');-->
+<!--        //-->
+<!--        // bookList.addEventListener('click', function(event) {-->
+<!--        //     if (event.target.className == 'delete') {-->
+<!--        //         const bookItem = event.target.parentNode;-->
+<!--        //         console.log(bookItem.getAttribute('bookid'));-->
+<!--        //         console.log(typeof bookItem.getAttribute('bookid'));-->
+<!--        //     }-->
+<!--        // });-->
+<!--    </script>-->
 </body>
 </html>
