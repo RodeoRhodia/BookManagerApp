@@ -33,9 +33,8 @@ public class BookController {
         bookService.addBook(book);
     }
 
-    @GetMapping("books/{bookId}")
+    @DeleteMapping("books/{bookId}")
     public void deleteBook(@PathVariable("bookId") Long bookId) {
         bookService.deleteBook(bookId);
-        getBooks();
     }
 }
