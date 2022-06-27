@@ -4,11 +4,21 @@
 //     bookList.addEventListener('click', function(event) {
 //         if (event.target.className == 'delete') {
 //             const bookItem = event.target.parentNode;
-//             console.log(bookItem);
+//             const bookId = bookItem.getAttribute('bookid');
 //
-//             // li.parentNode.removeChild(li);
+//             deleteBook(bookId);
+//
+//             // console.log(bookItem.getAttribute('bookid'));
+//             // console.log(typeof bookItem.getAttribute('bookid'));
 //         }
 //     });
 //
-//     console.log(bookObjects);
 // });
+//
+// function deleteBook(bookId) {
+//     fetch('/books/' + bookId, {
+//         method: 'DELETE',
+//     })
+//         .then(res => res.text()) // or res.json()
+//         .then(res => console.log(res));
+// }
