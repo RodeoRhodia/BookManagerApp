@@ -23,13 +23,19 @@ public class BookController {
         return modelAndView;
     }
 
+    @GetMapping("bookstest")
+    public List<Book> getBooksTest() {
+        return bookService.getBooks();
+    }
+
     @PostMapping("books")
     public void addBook(@RequestBody Book book) {
         bookService.addBook(book);
     }
 
-    @DeleteMapping("books/{bookId}")
+    @GetMapping("books/{bookId}")
     public void deleteBook(@PathVariable("bookId") Long bookId) {
         bookService.deleteBook(bookId);
+        getBooks();
     }
 }
